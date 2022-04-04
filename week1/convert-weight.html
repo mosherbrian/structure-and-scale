@@ -12,6 +12,7 @@
 				width: 88%;
 			}
 		</style>
+		<script type="text/javascript" src="convert-weight.js"></script>
 	</head>
 	<body>
 
@@ -19,9 +20,20 @@
 
 		<p>All of the magic here happens in the console.</p>
 
-
 		<script>
-			// Code goes here...
+
+			let kg = convertWeight.gramsToKilograms(42);
+			let mg = convertWeight.gramsToMilligrams(42);
+			let g = convertWeight.kilogramsToGrams(kg);
+			
+			console.table({ mg, g, kg });
+			
+			mg = convertWeight.kilogramsToMilligrams(kg);
+			g = convertWeight.milligramsToGrams(mg);
+			kg = convertWeight.milligramsToKilograms(mg);
+			
+			console.table({ mg, g, kg });
+
 		</script>
 	</body>
 </html>
