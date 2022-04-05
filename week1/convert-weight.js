@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const convertWeight = (function () {
 
 	function gramsToKilograms(g) {
@@ -33,4 +34,3 @@ const convertWeight = (function () {
 		milligramsToKilograms
 	};
 })();
-
