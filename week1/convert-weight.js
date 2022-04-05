@@ -1,12 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const convertWeight = (function () {
-
 	function gramsToKilograms(g) {
-		return parseFloat(g)/ 1000;
+		return parseFloat(g) / 1000;
 	}
 
 	function gramsToMilligrams(g) {
-		return parseFloat(g)* 1000;
+		return parseFloat(g) * 1000;
 	}
 
 	function kilogramsToGrams(kg) {
@@ -31,6 +30,6 @@ const convertWeight = (function () {
 		kilogramsToGrams,
 		kilogramsToMilligrams,
 		milligramsToGrams,
-		milligramsToKilograms
+		milligramsToKilograms,
 	};
 })();
