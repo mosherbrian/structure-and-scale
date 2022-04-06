@@ -44,7 +44,9 @@
 			}
 
 			function convert() {
-				return result.textContent = convertWeight[func.value](input.value) + ` ${getUnits(func.value)}`;
+				return (result.textContent =
+					// eslint-disable-next-line no-undef
+					convertWeight[func.value](input.value) + ` ${getUnits(func.value)}`);
 			}
 
 			input.addEventListener('change', convert);

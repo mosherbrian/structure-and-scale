@@ -1,8 +1,5 @@
 {
-  "dependencies": {
-  },
   "devDependencies": {
-    "jsdom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "eslint": "^8.12.0",
@@ -10,10 +7,12 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-config-xo": "^0.40.0",
+    "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.2.0",
+    "jsdom": "^19.0.0",
     "prettier": "2.6.2"
   }
 }
