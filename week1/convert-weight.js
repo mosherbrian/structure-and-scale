@@ -30,6 +30,6 @@ const convertWeight = (function () {
 		kilogramsToGrams,
 		kilogramsToMilligrams,
 		milligramsToGrams,
-		milligramsToKilograms,
+		milligramsToKilograms
 	};
 })();
