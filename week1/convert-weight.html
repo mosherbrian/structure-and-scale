@@ -18,16 +18,11 @@
 
 		<h1>Convert Weight Library</h1>
 
-		<!-- <p>All of the magic here happens in the console.</p> -->
-
-		<label>Value: <input></input></label>
+		<label>Milligrams: <input></input></label>
 		<select style="height: 1.75em" name="func">
-			<option value="gramsToKilograms" selected>Convert grams to kilograms</option>
-			<option value="gramsToMilligrams">Convert grams to milligrams</option>
-			<option value="kilogramsToGrams">Convert kilograms to grams</option>
-			<option value="kilogramsToMilligrams">Convert kilograms to milligrams</option>
-			<option value="milligramsToGrams">Convert milligrams to grams</option>
-			<option value="milligramsToKilograms">Convert milligrams to kilograms</option>
+			<option value="inMg" selected>to milligrams</option>
+			<option value="inGrams">to grams</option>
+			<option value="inKg">to kilograms</option>
 		</select>
 		<p>
 		<label>Conversion result: <span></span></label>
@@ -37,16 +32,10 @@
 			const func = document.querySelector('select');
 			const result = document.querySelector('span');
 
-			function getUnits(func) {
-				if (func.endsWith('Kilograms')) return 'kg';
-				if (func.endsWith('Milligrams')) return 'mg';
-				if (func.endsWith('Grams')) return 'g';
-			}
-
 			function convert() {
-				return (result.textContent =
-					// eslint-disable-next-line no-undef
-					convertWeight[func.value](input.value) + ` ${getUnits(func.value)}`);
+				// eslint-disable-next-line no-undef
+				let converter = new Weight(input.value);
+				result.textContent = converter[func.value]() + ' ' + converter.units();
 			}
 
 			input.addEventListener('change', convert);

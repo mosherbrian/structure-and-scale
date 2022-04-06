@@ -1,35 +1,31 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const convertWeight = (function () {
-	function gramsToKilograms(g) {
-		return parseFloat(g) / 1000;
+const Weight = (function () {
+	let units = 'mg';
+
+	// weight in milligrams
+	function Constructor(weight) {
+		units = 'mg';
+		this.weight = parseFloat(weight);
 	}
 
-	function gramsToMilligrams(g) {
-		return parseFloat(g) * 1000;
-	}
-
-	function kilogramsToGrams(kg) {
-		return parseFloat(kg) * 1000;
-	}
-
-	function kilogramsToMilligrams(kg) {
-		return parseFloat(kg) * 1000 * 1000;
-	}
-
-	function milligramsToGrams(mg) {
-		return parseFloat(mg) / 1000;
-	}
-
-	function milligramsToKilograms(mg) {
-		return parseFloat(mg) / 1000 / 1000;
-	}
-
-	return {
-		gramsToKilograms,
-		gramsToMilligrams,
-		kilogramsToGrams,
-		kilogramsToMilligrams,
-		milligramsToGrams,
-		milligramsToKilograms
+	Constructor.prototype.inGrams = function () {
+		units = 'g';
+		return this.weight / 1000;
 	};
+
+	Constructor.prototype.inKg = function () {
+		units = 'kg';
+		return this.weight / 1000 / 1000;
+	};
+
+	Constructor.prototype.inMg = function () {
+		units = 'mg';
+		return this.weight;
+	};
+
+	Constructor.prototype.units = function () {
+		return units;
+	};
+
+	return Constructor;
 })();
