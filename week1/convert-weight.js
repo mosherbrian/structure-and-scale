@@ -23,6 +23,21 @@ const Weight = (function () {
 		return this.weight;
 	};
 
+	Constructor.prototype.addGrams = function (g) {
+		units = 'g';
+		return (this.weight += g * 1000);
+	};
+
+	Constructor.prototype.addKg = function (kg) {
+		units = 'kg';
+		return (this.weight += kg * 1000 * 1000);
+	};
+
+	Constructor.prototype.addMg = function (mg) {
+		units = 'mg';
+		return (this.weight += mg);
+	};
+
 	Constructor.prototype.units = function () {
 		return units;
 	};
