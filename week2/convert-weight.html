@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Convert Weight Library</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+		<script type="text/javascript" src="convert-weight.js"></script>
+	</head>
+	<body>
+
+		<h1>Convert Weight Library</h1>
+
+		<input></input></label>
+		<select style="height: 1.75em" name="units">
+			<option value="mg" selected>milligrams</option>
+			<option value="grams">grams</option>
+			<option value="kg">kilograms</option>
+		</select>
+		<select style="height: 1.75em" name="func">
+			<option value="inMg" selected>to milligrams</option>
+			<option value="inGrams">to grams</option>
+			<option value="inKg">to kilograms</option>
+		</select>
+		<p>
+		<label>Conversion result: <span></span></label>
+
+		<script>
+			const units = document.querySelector('[name=units]');
+			const input = document.querySelector('input');
+			const func = document.querySelector('[name=func]');
+			const result = document.querySelector('span');
+
+			function convert() {
+				// eslint-disable-next-line no-undef
+				let converter = new Weight(input.value, {units: units.value});
+				result.textContent =
+					converter[func.value]() + ' ' + func.value.replace(/in/, '');
+			}
+
+			units.addEventListener('change', convert);
+			input.addEventListener('change', convert);
+			func.addEventListener('change', convert);
+		</script>
+	</body>
+</html>
