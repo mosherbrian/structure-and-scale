@@ -17,6 +17,7 @@ specifiers:
   jsdom: ^19.0.0
   prettier: 2.6.2
   ts-node: ^10.7.0
+  tsutils: ^3.21.0
   typescript: ^4.6.3
 
 devDependencies:
@@ -36,6 +37,7 @@ devDependencies:
   jsdom: 19.0.0
   prettier: 2.6.2
   ts-node: 10.7.0_ee885bc7281b682b6adbed6ae09ee090
+  tsutils: 3.21.0_typescript@4.6.3
   typescript: 4.6.3
 
 packages:
