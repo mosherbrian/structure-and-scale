@@ -15,8 +15,13 @@ const Weight = (function () {
 			options
 		);
 
+		// Make sure valid units were provided
+		if (!['mg', 'grams', 'kg'].includes(settings.units)) {
+			throw `[Convert.js]: "${settings.units}" is not a valid weight`;
+		}
+
 		this.weight = parseFloat(weight);
-		this.settings = settings;
+		this.units = settings.units;
 	}
 
 	function convert(val, fromUnits, toUnits) {
@@ -29,34 +34,34 @@ const Weight = (function () {
 	}
 
 	Constructor.prototype.inGrams = function () {
-		return convert(this.weight, this.settings.units, 'grams');
+		return convert(this.weight, this.units, 'grams');
 	};
 
 	Constructor.prototype.inKg = function () {
-		return convert(this.weight, this.settings.units, 'kg');
+		return convert(this.weight, this.units, 'kg');
 	};
 
 	Constructor.prototype.inMg = function () {
-		return convert(this.weight, this.settings.units, 'mg');
+		return convert(this.weight, this.units, 'mg');
 	};
 
 	Constructor.prototype.addGrams = function (val) {
-		this.weight += convert(parseFloat(val), 'grams', this.settings.units);
+		this.weight += convert(parseFloat(val), 'grams', this.units);
 		return this;
 	};
 
 	Constructor.prototype.addKg = function (val) {
-		this.weight += convert(parseFloat(val), 'kg', this.settings.units);
+		this.weight += convert(parseFloat(val), 'kg', this.units);
 		return this;
 	};
 
 	Constructor.prototype.addMg = function (val) {
-		this.weight += convert(parseFloat(val), 'mg', this.settings.units);
+		this.weight += convert(parseFloat(val), 'mg', this.units);
 		return this;
 	};
 
 	Constructor.prototype.units = function () {
-		return this.settings.units;
+		return this.units;
 	};
 
 	return Constructor;
