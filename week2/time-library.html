@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Dates Library</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+		<script type="text/javascript" src="time-library.js"></script>
+	</head>
+	<body>
+		<h1>Dates Library</h1>
+
+		<p>All of the magic here happens in the console.</p>
+
+		<script>
+			// Create a Date() object for halloween
+			let halloween = new Date('October 31, 2021');
+
+			// eslint-disable-next-line no-undef
+			let time = new Time();
+			let day = time.getDay(halloween);
+			console.log(day); // returns "Sunday"
+
+			time.addDays(halloween, 4); // Add 4 days to the date
+			console.log(halloween);
+
+			time.addMonths(halloween, 4); // Add 4 months to the date
+
+			// logs "Thu Mar 03 2022 ..."
+			console.log(halloween);
+		</script>
+	</body>
+</html>
