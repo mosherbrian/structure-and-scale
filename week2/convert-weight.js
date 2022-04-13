@@ -1,11 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Weight = (function () {
-	const unitEnum = ['mg', 'grams', 'kg'];
-	const conversionFactors = [
-		[1, 0.001, 0.000001], // mgs to X
-		[1000, 1, 0.001], // grams to X
-		[1000 * 1000, 1000, 1] // kgs to X
-	];
+	const conversionFactors = {
+		mg: {mg: 1, grams: 0.001, kg: 0.000001},
+		grams: {mg: 1000, grams: 1, kg: 0.001},
+		kg: {mg: 1000 * 1000, grams: 1000, kg: 1}
+	};
 
 	function Constructor(weight, options = {}) {
 		let settings = Object.assign(
@@ -25,12 +24,7 @@ const Weight = (function () {
 	}
 
 	function convert(val, fromUnits, toUnits) {
-		return (
-			val *
-			conversionFactors[unitEnum.findIndex((e) => e === fromUnits)][
-				unitEnum.findIndex((e) => e === toUnits)
-			]
-		);
+		return val * conversionFactors[fromUnits][toUnits];
 	}
 
 	Constructor.prototype.inGrams = function () {
