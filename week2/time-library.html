@@ -12,19 +12,18 @@
 				width: 88%;
 			}
 		</style>
-		<script type="text/javascript" src="time-library.js"></script>
 	</head>
 	<body>
 		<h1>Dates Library</h1>
 
 		<p>All of the magic here happens in the console.</p>
 
-		<script>
+		<script type="module">
+			import * as time from './time-library.js';
+
 			// Create a Date() object for halloween
 			let halloween = new Date('October 31, 2021');
 
-			// eslint-disable-next-line no-undef
-			let time = new Time();
 			let day = time.getDay(halloween);
 			console.log(day); // returns "Sunday"
 
