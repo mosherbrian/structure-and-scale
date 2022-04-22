@@ -49,11 +49,6 @@
 				]
 			});
 
-			// Try to override settings
-			// These should not change anything
-			// halloween._settings = null;
-			// halloween._settings.months = null;
-
 			// Get details from the instance
 			// returns "domingo" and "octubre"
 			let day = halloween.getDay();
@@ -61,11 +56,17 @@
 			let month = halloween.getMonth();
 			console.log(month);
 
-			// Add some time
-			let allHallowsDay = halloween.addYears(5).addDays(1);
+			// If the year on the Time() instance is greater than 2021, don't update
+			document.addEventListener('time:update', function (event) {
+				if (event.detail.time.date.getFullYear() > 2021) {
+					event.preventDefault();
+				}
+			});
 
-			// halloween should still be October 31, 2021
-			// allHallowsDay should be November 1, 2026
+			// Adjust the date
+			// the addYears() method won't update the date in this instance
+			let allHallowsDay = halloween.addYears(5).addMonths(1).addDays(1);
+
 			console.log(halloween.date);
 			console.log(allHallowsDay.date);
 		</script>

@@ -7,6 +7,27 @@
 // time.addMonths() - add a number of months to a date.
 // time.addYears() - add a number of years to a date.
 
+/**
+ * Emit a custom event
+ * @param  {String} type   The event type
+ * @param  {Object} detail Any details to pass along with the event
+ * @param  {Node}   elem   The element to attach the event to
+ */
+function emitEvent(type, detail = {}, elem = document) {
+	// Make sure there's an event type
+	if (!type) return;
+
+	// Create a new event
+	let event = new CustomEvent(type, {
+		bubbles: true,
+		cancelable: true,
+		detail: detail
+	});
+
+	// Dispatch the event
+	return elem.dispatchEvent(event);
+}
+
 function Constructor(...dateArgs) {
 	let lastArg = dateArgs?.[dateArgs.length - 1];
 	let settings = lastArg?.days || lastArg?.month ? dateArgs.pop() : null;
@@ -59,7 +80,7 @@ Constructor.prototype.addSeconds = function (seconds) {
 		seconds * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 Constructor.prototype.addMinutes = function (minutes) {
@@ -67,7 +88,7 @@ Constructor.prototype.addMinutes = function (minutes) {
 		minutes * 60 * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 Constructor.prototype.addHours = function (hours) {
@@ -75,7 +96,7 @@ Constructor.prototype.addHours = function (hours) {
 		hours * 60 * 60 * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 Constructor.prototype.addDays = function (days) {
@@ -83,7 +104,7 @@ Constructor.prototype.addDays = function (days) {
 		days * 24 * 60 * 60 * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 Constructor.prototype.addMonths = function (months) {
@@ -96,7 +117,7 @@ Constructor.prototype.addMonths = function (months) {
 		daysToAdd * 24 * 60 * 60 * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 Constructor.prototype.addYears = function (years) {
@@ -104,7 +125,7 @@ Constructor.prototype.addYears = function (years) {
 		years * 365 * 24 * 60 * 60 * 1000 + this.date.getTime(),
 		this._settings
 	);
-	return newTime;
+	return emitEvent('time:update', {time: newTime}) ? newTime : this;
 };
 
 export default Constructor;
