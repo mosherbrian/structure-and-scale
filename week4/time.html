@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Dates Library</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Dates Library</h1>
+
+		<p>All of the magic here happens in the console.</p>
+
+		<script src="../build/time.js"></script>
+		<script>
+			// Create a new Time() instance
+			// Customize the days and months
+			// eslint-disable-next-line no-undef
+			let halloween = new Time('October 31, 2021', {
+				days: [
+					'domingo',
+					'lunes',
+					'martes',
+					'miércoles',
+					'jueves',
+					'viernes',
+					'sábado'
+				],
+				months: [
+					'enero',
+					'febrero',
+					'marzo',
+					'abril',
+					'mayo',
+					'junio',
+					'julio',
+					'agosto',
+					'septiembre',
+					'octubre',
+					'noviembre',
+					'diciembre'
+				]
+			});
+
+			// Get details from the instance
+			// returns "domingo" and "octubre"
+			let day = halloween.getDay();
+			console.log(day);
+			let month = halloween.getMonth();
+			console.log(month);
+
+			// If the year on the Time() instance is greater than 2021, don't update
+			document.addEventListener('time:update', function (event) {
+				if (event.detail.time.date.getFullYear() > 2021) {
+					event.preventDefault();
+				}
+			});
+
+			// Adjust the date
+			// the addYears() method won't update the date in this instance
+			let allHallowsDay = halloween.addYears(5).addMonths(1).addDays(1);
+
+			console.log(halloween.date);
+			console.log(allHallowsDay.date);
+		</script>
+	</body>
+</html>
