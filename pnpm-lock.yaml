@@ -16,6 +16,7 @@ specifiers:
   eslint-plugin-promise: ^5.2.0
   jsdom: ^19.0.0
   prettier: 2.6.2
+  rollup: ^2.4.0
   ts-node: ^10.7.0
   tsutils: ^3.21.0
   typescript: ^4.6.3
@@ -36,6 +37,7 @@ devDependencies:
   eslint-plugin-promise: 5.2.0_eslint@8.13.0
   jsdom: 19.0.0
   prettier: 2.6.2
+  rollup: 2.70.2
   ts-node: 10.7.0_ee885bc7281b682b6adbed6ae09ee090
   tsutils: 3.21.0_typescript@4.6.3
   typescript: 4.6.3
@@ -997,6 +999,14 @@ packages:
     resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=}
     dev: true
 
+  /fsevents/2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
     dev: true
@@ -1616,6 +1626,14 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.0
+    dev: true
+
+  /rollup/2.70.2:
+    resolution: {integrity: sha512-EitogNZnfku65I1DD5Mxe8JYRUCy0hkK5X84IlDtUs+O6JRMpRciXTzyCUuX11b5L5pvjH+OmFXiQ3XjabcXgg==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /run-parallel/1.2.0:
