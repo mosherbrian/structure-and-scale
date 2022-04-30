@@ -97,6 +97,7 @@ function loadIcons() {
 	let icon = document.createElement('span');
 	icon.textContent = ' ♥';
 	icon.setAttribute('aria-label', 'Favorited');
+	icon.setAttribute('aria-hidden', 'true');
 
 	// Loop through each place and add an icon if it's a favorite
 	for (let place of places) {
