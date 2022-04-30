@@ -96,7 +96,6 @@ function loadIcons() {
 	// Create an icon
 	let icon = document.createElement('span');
 	icon.textContent = ' ♥';
-	icon.setAttribute('aria-label', 'Favorited');
 	icon.setAttribute('aria-hidden', 'true');
 
 	// Loop through each place and add an icon if it's a favorite
@@ -111,6 +110,7 @@ function loadIcons() {
 		let title = place.querySelector('.place-title');
 		if (!title) continue;
 		title.append(icon.cloneNode(true));
+		title.setAttribute('aria-label', 'Favorited');
 	}
 }
 
