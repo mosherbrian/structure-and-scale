@@ -1,1 +1,4 @@
-// The code for individual place pages should run here
+import {loadButtons} from './components/dom-tasks.js';
+
+// Load buttons into the UI
+loadButtons();

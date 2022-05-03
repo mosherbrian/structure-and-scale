@@ -1,60 +1,10 @@
-let favesID = 'places_faves';
-
-/**
- * Add a place to the faves
- * @param {String} id The place ID
- */
-function addFave (id) {
-
-	// Get saved items
-	let faves = JSON.parse(localStorage.getItem(favesID)) || {};
-
-	// Add place to it
-	faves[id] = true;
-
-	// Save back to localStorage
-	localStorage.setItem(favesID, JSON.stringify(faves));
-
-}
-
-/**
- * Remove a place from faves
- * @param {String} id The place ID
- */
-function removeFave (id) {
-
-	// Get saved items
-	let faves = JSON.parse(localStorage.getItem(favesID)) || {};
-
-	// Remove place from it
-	delete faves[id];
-
-	// Save back to localStorage
-	localStorage.setItem(favesID, JSON.stringify(faves));
-
-}
-
-/**
- * Check if a place is a favorite
- * @param {String}  id The place ID
- * @param {Boolean}    If true, the place is a favorite
- */
-function isFave (id) {
-
-	// Get saved items
-	let faves = JSON.parse(localStorage.getItem(favesID)) || {};
-
-	// Check if fave exists
-	return faves[id];
-
-}
+import {addFave, removeFave, isFave} from './local-storage.js';
 
 /**
  * Handle click events
  * @param  {Event} event The event object
  */
-function clickHandler (event) {
-
+function clickHandler(event) {
 	// Make sure a [data-fave] button was clicked
 	let btn = event.target.closest('[data-fave]');
 	if (!btn) return;
@@ -70,15 +20,13 @@ function clickHandler (event) {
 		btn.setAttribute('aria-pressed', 'true');
 		addFave(id);
 	}
-
 }
 
 /**
  * Load buttons into the UI
  * @return {[type]} [description]
  */
-function loadButtons () {
-
+function loadButtons() {
 	// Check for controls
 	let controls = document.querySelector('[data-controls]');
 	if (!controls) return;
@@ -87,20 +35,17 @@ function loadButtons () {
 	let id = controls.getAttribute('data-controls');
 
 	// Inject buttons
-	controls.innerHTML =
-		`<p>
+	controls.innerHTML = `<p>
 			<button data-fave="${id}" aria-pressed="${isFave(id) ? 'true' : 'false'}">
 				<span aria-hidden="true">♥</span> Favorite
 			</button>
 		</p>`;
-
 }
 
 /**
  * Load icons onto the homepage for favorited places
  */
-function loadIcons () {
-
+function loadIcons() {
 	// Get places
 	let places = document.querySelectorAll('[data-place]');
 
@@ -111,7 +56,6 @@ function loadIcons () {
 
 	// Loop through each place and add an icon if it's a favorite
 	for (let place of places) {
-
 		// Get the place ID
 		let id = place.getAttribute('data-place');
 
@@ -122,16 +66,10 @@ function loadIcons () {
 		let title = place.querySelector('.place-title');
 		if (!title) continue;
 		title.append(icon.cloneNode(true));
-
 	}
-
 }
-
-// Load buttons into the UI
-loadButtons();
-
-// Load icons onto the homepage
-loadIcons();
 
 // Listen for clicks on fave and visited buttons
 document.addEventListener('click', clickHandler);
+
+export {loadButtons, loadIcons};
