@@ -1,20 +1,23 @@
 import pkg from './package.json';
+import {terser} from 'rollup-plugin-terser';
 
 const banner = `/*! ${pkg.name} v${pkg.version} | ${
 	pkg.description
 } | Copyright ${new Date().getFullYear()} | ${pkg.license} license */`;
 
-const formats = ['iife', 'es', 'cjs'];
+const files = ['home.js', 'place.js'];
+const minify = true;
 
-export default formats.map(function (format) {
+export default files.map(function (file) {
 	return {
-		input: 'week4/time.js',
+		input: `week5/places_bundle/src/${file}`,
 		output: {
-			file: `build/time${format === 'iife' ? '' : `.${format}`}.js`,
-			format: format,
-			name: 'Time',
+			file: `week5/places_bundle/${file}`,
+			format: 'iife',
 			banner: banner,
-			exports: 'default'
+			name: file.replace('.js', ''),
+			plugins: minify ? [terser()] : null,
+			sourcemap: minify
 		}
 	};
 });
